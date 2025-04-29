@@ -25,13 +25,19 @@ public class PracticaMVC411 {
         
         // Inicializamos el modelo creando un nuevo estudiante
         Estudiante estudiante1 = new Estudiante();
-        estudiante1.setNombre("Pepito");
-        estudiante1.setEdad(17);
+        estudiante1.setNombre("Pedro");
+        estudiante1.setEdad(27);
         
         // Inicializamos la vista
         VistaEstudiante vista = new VistaEstudiante();
         
         ControladorEstudiante controlador = new ControladorEstudiante(estudiante1, vista);
+        
+        Estudiante estudiante2 = new Estudiante();
+        estudiante2.setNombre("Fernando");
+        estudiante2.setEdad(29);
+        
+        controlador.crearEstudiante(estudiante2);
         
         controlador.actualizarVista();
     
