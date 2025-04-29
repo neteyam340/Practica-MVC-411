@@ -5,6 +5,7 @@
 package practicamvc411;
 
 import controlador.ControladorEstudiante;
+import modelo.ConexionDatabase;
 import modelo.Estudiante;
 import vista.VistaEstudiante;
 
@@ -19,6 +20,8 @@ public class PracticaMVC411 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        ConexionDatabase.getConnection();
         
         // Inicializamos el modelo creando un nuevo estudiante
         Estudiante estudiante1 = new Estudiante();

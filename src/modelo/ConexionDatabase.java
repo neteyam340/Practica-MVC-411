@@ -4,9 +4,15 @@
  */
 package modelo;
 
+// Conexion de SQL
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
+// Lectura de archivos o propiedades
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Properties;
 
 /**
  *
@@ -22,15 +28,19 @@ public class ConexionDatabase {
             
             try {
                 
-                String url = "jdbc:mysql://localhost:3306/escuela";
-                String user = "root";
-                String password = "admin213";
+                Properties props = new Properties();
+                
+                props.load(new FileInputStream("db.properties"));
+                
+                String url = props.getProperty("db.url");
+                String user = props.getProperty("db.user");
+                String password = props.getProperty("db.password");
 
                 conexion = DriverManager.getConnection(url, user, password);
                 
                 System.out.println("Conexion Exitosa!");
                 
-            } catch (SQLException error) {
+            } catch (SQLException | IOException error) {
                 System.out.println("Error message: " + error);
                 throw new RuntimeException("Fallo la conexion a la base de datos." + error);
                 // error.printStackTrace();
