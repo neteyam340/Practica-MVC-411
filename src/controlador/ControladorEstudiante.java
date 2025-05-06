@@ -46,4 +46,15 @@ public class ControladorEstudiante {
     public List<Estudiante> obtenerEstudiantes() {
         return modelo.obtenerTodosLosEstudiantes();
     }
+    
+    public void removerEstudiante(int id){
+        modelo.deleteEstudiante(id);
+        System.out.println("Estudiante con id " + id + " eliminado correctamente!");
+    }
+    
+    public void actualizarEstudiante(Estudiante estudiante){
+        modelo.updateEstudiante(estudiante);
+        System.out.println("Estudiante actualizado correctamente!");
+    }
+    
 }

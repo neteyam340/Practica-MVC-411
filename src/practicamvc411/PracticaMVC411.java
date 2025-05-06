@@ -29,10 +29,16 @@ public class PracticaMVC411 {
         
         ControladorEstudiante controlador = new ControladorEstudiante(estudiante, vista);
         
-        estudiante.setNombre("Jorge");
-        estudiante.setEdad(24);
+        estudiante.setId(44);
+        estudiante.setNombre("Carlos");
+        estudiante.setEdad(21);
         
-        controlador.crearEstudiante(estudiante);
+        // controlador.crearEstudiante(estudiante);
+        
+        // controlador.removerEstudiante(40);
+        // controlador.removerEstudiante(43);
+        
+        controlador.actualizarEstudiante(estudiante);
         
         List<Estudiante> estudiantes = controlador.obtenerEstudiantes();
     
