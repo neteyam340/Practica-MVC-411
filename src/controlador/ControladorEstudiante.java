@@ -4,6 +4,7 @@
  */
 package controlador;
 
+import java.util.List;
 import modelo.Estudiante;
 import vista.VistaEstudiante;
 
@@ -42,7 +43,7 @@ public class ControladorEstudiante {
         System.out.println("Estudiante creado correctamente!");
     }
     
-    public void actualizarVista() {
-        vista.mostrarDetallesEstudiante(modelo.getNombre(), modelo.getEdad());
+    public List<Estudiante> obtenerEstudiantes() {
+        return modelo.obtenerTodosLosEstudiantes();
     }
 }

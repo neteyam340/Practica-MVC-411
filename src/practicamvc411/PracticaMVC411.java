@@ -5,6 +5,7 @@
 package practicamvc411;
 
 import controlador.ControladorEstudiante;
+import java.util.List;
 import modelo.ConexionDatabase;
 import modelo.Estudiante;
 import vista.VistaEstudiante;
@@ -20,27 +21,23 @@ public class PracticaMVC411 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        ConexionDatabase.getConnection();
-        
         // Inicializamos el modelo creando un nuevo estudiante
-        Estudiante estudiante1 = new Estudiante();
-        estudiante1.setNombre("Pedro");
-        estudiante1.setEdad(27);
+        Estudiante estudiante = new Estudiante();
         
         // Inicializamos la vista
         VistaEstudiante vista = new VistaEstudiante();
         
-        ControladorEstudiante controlador = new ControladorEstudiante(estudiante1, vista);
+        ControladorEstudiante controlador = new ControladorEstudiante(estudiante, vista);
         
-        Estudiante estudiante2 = new Estudiante();
-        estudiante2.setNombre("Fernando");
-        estudiante2.setEdad(29);
+        estudiante.setNombre("Jorge");
+        estudiante.setEdad(24);
         
-        controlador.crearEstudiante(estudiante2);
+        controlador.crearEstudiante(estudiante);
         
-        controlador.actualizarVista();
+        List<Estudiante> estudiantes = controlador.obtenerEstudiantes();
     
+        vista.mostrarDetallesEstudiantes(estudiantes);
+        
     }
     
 }

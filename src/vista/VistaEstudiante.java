@@ -4,15 +4,24 @@
  */
 package vista;
 
+import java.util.List;
+import modelo.Estudiante;
+
 /**
  *
  * @author g.perezmoreno
  */
 public class VistaEstudiante {
     
-    public void mostrarDetallesEstudiante(String nombre, int edad) {
-        System.out.println("Detalles del estudiante");
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Edad: " + edad);
+    public void mostrarDetallesEstudiantes(List<Estudiante> estudiantes) {
+        System.out.println("Listo de estudiantes: ");
+        
+        for (Estudiante estudiante : estudiantes) {
+            System.out.println(
+                "Id: " + estudiante.getId()
+                + ", Nombre: " + estudiante.getNombre()
+                + ", Edad: " + estudiante.getEdad()
+            );
+        }
     }
 }
