@@ -43,7 +43,9 @@ public class Estudiante {
 
     public static void insertarEstudiante(Estudiante estudiante) {
         Connection conexion = ConexionDatabase.getConnection();
-        String sql = "INSERT INTO estudiante (nombre, edad) VALUES (?, ?)";
+        //String sql = "INSERT INTO estudiante (nombre, edad) VALUES (?, ?)";
+
+        String sql = "CALL insertar_estudiante(?, ?)";
 
         try (PreparedStatement statement = conexion.prepareStatement(sql)) {
             statement.setString(1, estudiante.getNombre());
@@ -61,7 +63,8 @@ public class Estudiante {
 
     public static List<Estudiante> obtenerTodosLosEstudiantes() {
         List<Estudiante> listaEstudiantes = new ArrayList<>();
-        String sql = "SELECT id, nombre, edad FROM estudiante";
+        //String sql = "SELECT id, nombre, edad FROM estudiante";
+        String sql = "SELECT id, nombre, edad FROM get_estudiantes";
 
         try {
             Connection conexion = ConexionDatabase.getConnection();
@@ -73,7 +76,7 @@ public class Estudiante {
                 estudiante.setId(resultado.getInt("id"));
                 estudiante.setNombre(resultado.getString("nombre"));
                 estudiante.setEdad(resultado.getInt("edad"));
-                
+
                 listaEstudiantes.add(estudiante);
             }
 
@@ -98,8 +101,8 @@ public class Estudiante {
             error.printStackTrace();
         }
     }
-    
-     public static void updateEstudiante(Estudiante estudiante) {
+
+    public static void updateEstudiante(Estudiante estudiante) {
         Connection conexion = ConexionDatabase.getConnection();
         String sql = "UPDATE estudiante SET nombre = ?, edad = ? WHERE id = ?";
 
@@ -115,5 +118,5 @@ public class Estudiante {
             error.printStackTrace();
         }
     }
-    
+
 }
